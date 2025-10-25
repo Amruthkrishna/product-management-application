@@ -1,0 +1,8 @@
+<component name="CopyrightManager">
+  <settings default="Oracle">
+    <module2copyright>
+      <element module="Project Files" copyright="Oracle" />
+      <element module="All" copyright="Oracle" />
+    </module2copyright>
+  </settings>
+</component>
