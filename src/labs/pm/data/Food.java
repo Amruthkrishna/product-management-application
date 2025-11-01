@@ -32,4 +32,9 @@ public class Food extends Product {
         super(id, name, price, rating);
         this.bestbefore = bestbefore;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+", "+bestbefore;
+    }
 }
