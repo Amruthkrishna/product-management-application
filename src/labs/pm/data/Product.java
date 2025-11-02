@@ -14,9 +14,13 @@
  */
 
 package labs.pm.data;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import static labs.pm.data.Rating.*;
+import java.time.LocalDate;
+import java.util.Objects;
+
+import static labs.pm.data.Rating.NOT_RATED;
 /**
  * {@code Product} class represents properties and behaviors of
  * product objects in the Product Management System.
@@ -28,7 +32,7 @@ import static labs.pm.data.Rating.*;
  * @version 4.0
  * @author oracle
  */
-public class Product {
+public abstract class Product {
     private final int id;
     private final String name;
     private final BigDecimal price;
@@ -79,12 +83,30 @@ public class Product {
     public Rating getRating() {
         return rating;
     }
-    public Product applyRating(Rating newRating){
-        return new Product(id,name,price,newRating);
+    public abstract Product applyRating(Rating newRating);
+    public LocalDate getBestbefore() {
+        return LocalDate.now();
     }
 
     @Override
     public String toString() {
-        return id+", "+name+", "+price+", "+getDiscount()+", "+rating.getStars();
+        return id+", "+name+", "+price+", "+getDiscount()+", "+rating.getStars()+" "+getBestbefore();
     }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Product product = (Product) o;
+//        return id == product.id && Objects.equals(name, product.name);
+        if(this==o) return true;
+        if(o instanceof Product product){
+            return id == product.id && Objects.equals(name,product.name);
+        }
+        return false;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
 }

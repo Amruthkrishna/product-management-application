@@ -24,8 +24,23 @@ import java.time.LocalDate;
 public class Food extends Product {
     private LocalDate bestbefore;
 
+    /**
+    * Assumes that the bestbefore date is today
+    * @return the current date
+    * */
     public LocalDate getBestbefore() {
-        return bestbefore;
+        return LocalDate.now();
+    }
+
+    @Override
+    public BigDecimal getDiscount() {
+        return (bestbefore.isEqual(LocalDate.now()))
+                ?super.getDiscount() : BigDecimal.ZERO;
+    }
+
+    @Override
+    public Product applyRating(Rating newRating) {
+        return new Food(getId(), getName(), getPrice(), newRating, bestbefore);
     }
 
     public Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestbefore) {
@@ -33,8 +48,4 @@ public class Food extends Product {
         this.bestbefore = bestbefore;
     }
 
-    @Override
-    public String toString() {
-        return super.toString()+", "+bestbefore;
-    }
 }
