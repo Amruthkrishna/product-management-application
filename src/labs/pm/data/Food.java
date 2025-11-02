@@ -21,7 +21,7 @@ import java.time.LocalDate;
 /**
  * @author oracle
  **/
-public class Food extends Product {
+public final class Food extends Product {
     private LocalDate bestbefore;
 
     /**
