@@ -20,7 +20,6 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import static labs.pm.data.Rating.NOT_RATED;
 /**
  * {@code Product} class represents properties and behaviors of
  * product objects in the Product Management System.
@@ -38,19 +37,19 @@ public abstract class Product {
     private final BigDecimal price;
     private final Rating rating;
 
-    public Product(int id, String name, BigDecimal price, Rating rating) {
+    Product(int id, String name, BigDecimal price, Rating rating) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.rating = rating;
     }
-    public Product(int id, String name, BigDecimal price){
-        this(id, name, price, NOT_RATED);
-    }
-
-    public Product(){
-        this(0,"No Name",BigDecimal.ZERO);
-    }
+//    public Product(int id, String name, BigDecimal price){
+//        this(id, name, price, NOT_RATED);
+//    }
+//
+//    public Product(){
+//        this(0,"No Name",BigDecimal.ZERO);
+//    }
 
 
     /**

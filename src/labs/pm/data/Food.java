@@ -43,7 +43,7 @@ public class Food extends Product {
         return new Food(getId(), getName(), getPrice(), newRating, bestbefore);
     }
 
-    public Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestbefore) {
+    Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestbefore) {
         super(id, name, price, rating);
         this.bestbefore = bestbefore;
     }
